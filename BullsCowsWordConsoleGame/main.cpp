@@ -1,18 +1,18 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+
 
 void PrintIntro();
 void PrintGuess();
 void PlayGame();
-string GetGuess();
+std::string GetGuess();
 bool PlayAgain();
 
 int main();
 
-string GuessAttempt[]{ "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" };
-string PlayerGuess = "";
+std::string GuessAttempt[]{ "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth" };
+std::string PlayerGuess = "";
 
 bool bNewGame = false;
 constexpr int WORD_LENGTH = 3;
@@ -35,13 +35,13 @@ int main()
 		// introduce the game
 void PrintIntro()
 {
-	cout << endl;
-	cout << " Welcome to Bulls and Cows, a fun word game.\n" << endl;
-	cout << " Can you guess the " << WORD_LENGTH;
-	cout << " letter isogram I'm thinking of?\n" << endl;
-	cout << " Two guesses per letter for a total of " << MaxGuess;
-	cout << " guesses\n";
-	cout << endl;
+	std::cout << std::endl;
+	std::cout << " Welcome to Bulls and Cows, a fun word game.\n" << std::endl;
+	std::cout << " Can you guess the " << WORD_LENGTH;
+	std::cout << " letter isogram I'm thinking of?\n" << std::endl;
+	std::cout << " Two guesses per letter for a total of " << MaxGuess;
+	std::cout << " guesses\n";
+	std::cout << std::endl;
 	return;
 }
 
@@ -52,41 +52,41 @@ void PlayGame()
 	for (int i = 0; i < MaxGuess; i++)
 	{
 		Count = i;
-		cout << endl;
-		cout << "   Remaining guesses " << MaxGuess - Count;
-		cout << endl;
+		std::cout << std::endl;
+		std::cout << "   Remaining guesses " << MaxGuess - Count;
+		std::cout << std::endl;
 		GetGuess();
 		PrintGuess();
 	}
 }
 
 		// get player's guess
-string GetGuess()
+std::string GetGuess()
 {
-	cout << endl;
-	cout << "   Enter your " << GuessAttempt[Count];
-	cout << " guess?  ";
-	getline(cin, PlayerGuess);
+	std::cout << std::endl;
+	std::cout << "   Enter your " << GuessAttempt[Count];
+	std::cout << " guess?  ";
+	std::getline(std::cin, PlayerGuess);
 	return PlayerGuess;
 }
 
 		// print player's guess
 void PrintGuess()
 {
-	cout << endl;
-	cout << "     Your " << GuessAttempt[Count]; 
-	cout << " guess was:  " << PlayerGuess << endl;
-	cout << endl;
+	std::cout << std::endl;
+	std::cout << "     Your " << GuessAttempt[Count]; 
+	std::cout << " guess was:  " << PlayerGuess << std::endl;
+	std::cout << std::endl;
 	return;
 }
 
 		// replay or end game
 bool PlayAgain()
 {
-	string Response = "";
-	cout << endl;
-	cout << "  Good work\n" << endl;
-	cout << "  Would you like to play again y/n?  ";
-	getline(cin, Response);
+	std::string Response = "";
+	std::cout << std::endl;
+	std::cout << "  Good work\n" << std::endl;
+	std::cout << "  Would you like to play again y/n?  ";
+	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 }
